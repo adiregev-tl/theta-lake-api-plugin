@@ -10,7 +10,7 @@
     {
       "name": "theta-lake-api",
       "description": "Theta Lake API helper — endpoint discovery, authenticated curl wrapper, OpenAPI reference, and safe read/write execution.",
-      "source": ".",
+      "source": "./plugins/theta-lake-api",
       "category": "productivity",
       "homepage": "https://github.com/adiregev-tl/theta-lake-api-plugin"
     }

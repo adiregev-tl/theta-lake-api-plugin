@@ -79,7 +79,7 @@ git clone https://github.com/adiregev-tl/theta-lake-api-plugin.git
 Copy the template and fill in your credentials:
 
 ```bash
-cp skills/theta-lake-api/.env.theta-lake.example skills/theta-lake-api/.env.theta-lake
+cp plugins/theta-lake-api/skills/theta-lake-api/.env.theta-lake.example skills/theta-lake-api/.env.theta-lake
 ```
 
 `.env.theta-lake` keys:
@@ -99,17 +99,20 @@ cp skills/theta-lake-api/.env.theta-lake.example skills/theta-lake-api/.env.thet
 ```
 theta-lake-api-plugin/
 ├── .claude-plugin/
-│   ├── plugin.json          # plugin manifest
-│   └── marketplace.json     # marketplace manifest (this repo IS a marketplace)
-├── skills/
+│   └── marketplace.json         # marketplace manifest (this repo IS a marketplace)
+├── plugins/
 │   └── theta-lake-api/
-│       ├── SKILL.md
-│       ├── api-quick-ref.md
-│       ├── *-api.md         # per-domain reference docs
-│       ├── common-patterns.md
-│       ├── theta_lake_api_v1.yml
-│       ├── .env.theta-lake.example
-│       └── scripts/tl-curl.sh
+│       ├── .claude-plugin/
+│       │   └── plugin.json      # plugin manifest
+│       └── skills/
+│           └── theta-lake-api/
+│               ├── SKILL.md
+│               ├── api-quick-ref.md
+│               ├── *-api.md     # per-domain reference docs
+│               ├── common-patterns.md
+│               ├── theta_lake_api_v1.yml
+│               ├── .env.theta-lake.example
+│               └── scripts/tl-curl.sh
 └── README.md
 ```
 
