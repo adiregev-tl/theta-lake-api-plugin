@@ -1,0 +1,16 @@
+{
+  "name": "theta-lake-api",
+  "description": "Theta Lake API helper — find endpoints, compose authenticated curl calls, explain request/response schemas, and safely execute read/write operations. Bundles the Theta Lake OpenAPI spec and a curl wrapper that handles bearer + OAuth client-credentials auth with automatic 401 refresh.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Adi Regev",
+    "email": "adi.regev@thetalake.com"
+  },
+  "keywords": [
+    "theta-lake",
+    "api",
+    "compliance",
+    "supervision",
+    "openapi"
+  ]
+}

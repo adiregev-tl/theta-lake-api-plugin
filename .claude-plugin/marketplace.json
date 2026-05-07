@@ -1,0 +1,18 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "theta-lake-plugins",
+  "description": "Theta Lake plugins for Claude Code.",
+  "owner": {
+    "name": "Adi Regev",
+    "email": "adi.regev@thetalake.com"
+  },
+  "plugins": [
+    {
+      "name": "theta-lake-api",
+      "description": "Theta Lake API helper — endpoint discovery, authenticated curl wrapper, OpenAPI reference, and safe read/write execution.",
+      "source": ".",
+      "category": "productivity",
+      "homepage": "https://github.com/adiregev-tl/theta-lake-api-plugin"
+    }
+  ]
+}
