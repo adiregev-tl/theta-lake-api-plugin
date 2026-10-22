@@ -123,20 +123,22 @@
 | POST | `/labels/{label_id}/records/{record_id}` | Apply a label to a record | `labels:use` | heavy |
 | DELETE | `/labels/{label_id}/records/{record_id}` | Remove a label from a record | `labels:use` | heavy |
 
-## Legal Hold
+## Legal Matters
 
-| Method | Path | Summary | Permission | Rate Limit |
-|--------|------|---------|------------|------------|
-| GET | `/legal_hold` | List all legal holds | `legal_hold:read` | medium |
-| POST | `/legal_hold` | Create a legal hold. Body: `name` (required), `description` | `legal_hold:create` | heavy |
-| GET | `/legal_hold/{id}` | Get a legal hold by id | `legal_hold:read` | heavy |
-| PUT | `/legal_hold/{id}` | Update a legal hold. Body: `name`, `description` | `legal_hold:update` | heavy |
-| GET | `/legal_hold/{id}/logs` | Get legal hold logs | `legal_hold:read` | heavy |
-| GET | `/legal_hold/roles` | List legal hold roles | `legal_hold:read` | medium |
-| GET | `/legal_hold/{id}/rules` | List rules for a legal hold. Params: `page_token`, `max` | `legal_hold:read` | medium |
-| POST | `/legal_hold/{id}/rules` | Create a rule. Body: `identity_id` (required), `roles[]` (required, from /legal_hold/roles), `start_date`, `end_date` | `legal_hold:update` | heavy |
-| PUT | `/legal_hold/{id}/rules/{rule_id}` | Update a legal hold rule. Same body as POST | `legal_hold:update` | heavy |
-| DELETE | `/legal_hold/{id}/rules/{rule_id}` | Delete a legal hold rule | `legal_hold:delete` | heavy |
+Renamed from `/legal_hold`; the `rules` sub-resource is now `custodians`.
+Permission scopes kept the old `legal_hold:*` names. There is no single-item GET.
+
+| Method | Endpoint | Description | Permission |
+|--------|----------|-------------|------------|
+| GET | `/legal_matters` | List all legal matters. Params: `page_token`, `max` | `legal_hold:read` |
+| POST | `/legal_matters` | Create a legal matter. Body: `name`, `description` | `legal_hold:create` |
+| PUT | `/legal_matters/{id}` | Update a legal matter. Body: `name`, `description` | `legal_hold:update` |
+| GET | `/legal_matters/{id}/logs` | Get legal matter logs. Params: `page_token`, `max` | `legal_hold:read` |
+| GET | `/legal_matters/roles` | List roles for custodian assignment | `legal_hold:read` |
+| GET | `/legal_matters/{id}/custodians` | List custodians. Params: `page_token`, `max` | `legal_hold:read` |
+| POST | `/legal_matters/{id}/custodians` | Add a custodian. Body: `identity_id` (required), `roles[]` (required, from /legal_matters/roles), `start_date`, `end_date` | `legal_hold:update` |
+| PUT | `/legal_matters/{id}/custodians/{custodian_id}` | Update a custodian. Same body as POST | `legal_hold:update` |
+| DELETE | `/legal_matters/{id}/custodians/{custodian_id}` | Remove a custodian | `legal_hold:delete` |
 
 ## Org Units
 

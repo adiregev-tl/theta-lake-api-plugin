@@ -13,8 +13,8 @@ client-credentials (with automatic refresh on `401`).
   `records-api.md`, `search-api.md`, `workflows-api.md`, `ingestion-api.md`,
   …) plus a `common-patterns.md` covering pagination, errors, and date
   ranges.
-- `theta_lake_api_v1.yml` — the full Theta Lake OpenAPI spec (v1.23.0) for
-  exact schema lookups.
+- `theta_lake_api_v1.yml` — the full Theta Lake OpenAPI spec (v1.23.0,
+  129 paths) for exact schema lookups. See *Keeping the spec current* below.
 - `scripts/tl-curl.sh` — authenticated `curl` wrapper. Reads credentials
   from `.env.theta-lake` next to the script, resolves a token (static or
   OAuth), pretty-prints JSON via `jq`, and retries once on `401` after
@@ -48,6 +48,34 @@ The skill instructs Claude to:
    `PATCH` / `DELETE`.
 5. Summarize responses, mention pagination, and explain `403` / `401`
    errors using the bundled permission map.
+
+## Keeping the spec current
+
+The bundled spec is a snapshot. Refresh it from the developer portal:
+
+```bash
+curl -sL -o plugins/theta-lake-api/skills/theta-lake-api/theta_lake_api_v1.yml \
+  https://developer.thetalake.com/api/v1/reference/theta_lake_api_v1.yml
+```
+
+That URL is the Download button behind
+<https://developer.thetalake.com/documentation/open-api-specification>. The page
+itself is a single-page app and contains no spec, so fetching the HTML gets you
+nothing.
+
+**The `info.version` field is not a reliable staleness check.** An earlier
+snapshot in this repo declared `1.23.0` with 107 paths while the published file
+declared the same `1.23.0` with 129 paths. Compare path counts instead:
+
+```bash
+grep -cE '^  /' plugins/theta-lake-api/skills/theta-lake-api/theta_lake_api_v1.yml
+```
+
+When the spec moves, the per-domain reference docs and `api-quick-ref.md` do not
+follow automatically — they are hand-written prose. Diff the path list before and
+after and update any doc whose endpoints changed. The `/legal_hold` →
+`/legal_matters` rename is the worked example: the stale snapshot sent callers to
+an endpoint that had started returning 404.
 
 ## Prerequisites
 
