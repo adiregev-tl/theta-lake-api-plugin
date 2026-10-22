@@ -33,7 +33,7 @@ For detailed parameters, use the relevant reference:
 - Cases: `cases-api.md`
 - Identities: `identities-api.md`
 - Ingestion and upload: `ingestion-api.md`
-- Legal hold: `legal-hold-api.md`
+- Legal matters (was legal hold): `legal-matters-api.md`
 - Records: `records-api.md`
 - Supervision spaces: `supervision-spaces-api.md`
 - Users and groups: `users-groups-api.md`
